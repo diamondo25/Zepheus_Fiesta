@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{741599D9-85DD-4BDF-A12D-AD5F6BF48941}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Zepheus.World</RootNamespace>
+    <AssemblyName>Zepheus.World</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Run\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Run\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Selectors" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClientManager.cs" />
+    <Compile Include="Data\DataProvider.cs" />
+    <Compile Include="Data\WorldCharacter.cs" />
+    <Compile Include="Data\WorldGuild.cs" />
+    <Compile Include="Data\ZoneInfo.cs" />
+    <Compile Include="Handlers\Handler25.cs" />
+    <Compile Include="Handlers\Handler29.cs" />
+    <Compile Include="Handlers\Handler2.cs" />
+    <Compile Include="Handlers\Handler28.cs" />
+    <Compile Include="Handlers\Handler3.cs" />
+    <Compile Include="Handlers\Handler31.cs" />
+    <Compile Include="Handlers\Handler4.cs" />
+    <Compile Include="Handlers\Handler5.cs" />
+    <Compile Include="Handlers\HandlerStore.cs" />
+    <Compile Include="Handlers\PacketHelper.cs" />
+    <Compile Include="InterServer\InterHandler.cs" />
+    <Compile Include="InterServer\InterHandlerStore.cs" />
+    <Compile Include="InterServer\LoginConnector.cs" />
+    <Compile Include="InterServer\ZoneAcceptor.cs" />
+    <Compile Include="InterServer\ZoneConnection.cs" />
+    <Compile Include="Networking\WorldAcceptor.cs" />
+    <Compile Include="Networking\WorldClient.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\DatabaseChecks.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Worker.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zepheus.Database\Zepheus.Database.csproj">
+      <Project>{F9E5B011-A091-431D-9455-687D6FE6BD55}</Project>
+      <Name>Zepheus.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zepheus.FiestaLib\Zepheus.FiestaLib.csproj">
+      <Project>{0F8F0F42-7562-4BF5-B2D6-8AA2FF13A97F}</Project>
+      <Name>Zepheus.FiestaLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zepheus.InterLib\Zepheus.InterLib.csproj">
+      <Project>{230A65F7-93AC-4EE3-8D20-95BF0651E288}</Project>
+      <Name>Zepheus.InterLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zepheus.Util\Zepheus.Util.csproj">
+      <Project>{463FA649-3E4C-42A0-AF28-9132E1BE07DB}</Project>
+      <Name>Zepheus.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

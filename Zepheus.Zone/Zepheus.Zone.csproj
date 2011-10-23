@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3FDE7C41-C964-48C9-B4CB-2AF2176DB08B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Zepheus.Zone</RootNamespace>
+    <AssemblyName>Zepheus.Zone</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Run\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Run\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChatLog.cs" />
+    <Compile Include="ClientManager.cs" />
+    <Compile Include="CommandHandler.cs" />
+    <Compile Include="CommandLog.cs" />
+    <Compile Include="Data\DataProvider.cs" />
+    <Compile Include="Data\MobBreedLocation.cs" />
+    <Compile Include="Game\AttackSequence__.cs" />
+    <Compile Include="Game\Buffs.cs" />
+    <Compile Include="Game\AttackSequence.cs" />
+    <Compile Include="Game\Drop.cs" />
+    <Compile Include="Game\DroppedEquip.cs" />
+    <Compile Include="Game\DroppedItem.cs" />
+    <Compile Include="Game\Equip.cs" />
+    <Compile Include="Game\House.cs" />
+    <Compile Include="Game\Item.cs" />
+    <Compile Include="Game\Mob.cs" />
+    <Compile Include="Game\NPC.cs" />
+    <Compile Include="Game\Question.cs" />
+    <Compile Include="Game\Sector.cs" />
+    <Compile Include="Game\Skill.cs" />
+    <Compile Include="Game\SkillVictim.cs" />
+    <Compile Include="Game\ZoneCharacter.cs" />
+    <Compile Include="Game\Map.cs" />
+    <Compile Include="Game\MapObject.cs" />
+    <Compile Include="Handlers\Handler12.cs" />
+    <Compile Include="Handlers\Handler15.cs" />
+    <Compile Include="Handlers\Handler18.cs" />
+    <Compile Include="Handlers\Handler2.cs" />
+    <Compile Include="Handlers\Handler20.cs" />
+    <Compile Include="Handlers\Handler3.cs" />
+    <Compile Include="Handlers\Handler4.cs" />
+    <Compile Include="Handlers\Handler6.cs" />
+    <Compile Include="Handlers\Handler7.cs" />
+    <Compile Include="Handlers\Handler8.cs" />
+    <Compile Include="Handlers\Handler9.cs" />
+    <Compile Include="Handlers\HandlerStore.cs" />
+    <Compile Include="InterServer\InterHandler.cs" />
+    <Compile Include="InterServer\InterHandlerStore.cs" />
+    <Compile Include="InterServer\WorldConnector.cs" />
+    <Compile Include="MapManager.cs" />
+    <Compile Include="Networking\ZoneAcceptor.cs" />
+    <Compile Include="Networking\ZoneClient.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\CheatTracker.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Worker.cs" />
+    <Compile Include="ZoneData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zepheus.Database\Zepheus.Database.csproj">
+      <Project>{F9E5B011-A091-431D-9455-687D6FE6BD55}</Project>
+      <Name>Zepheus.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zepheus.FiestaLib\Zepheus.FiestaLib.csproj">
+      <Project>{0F8F0F42-7562-4BF5-B2D6-8AA2FF13A97F}</Project>
+      <Name>Zepheus.FiestaLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zepheus.InterLib\Zepheus.InterLib.csproj">
+      <Project>{230A65F7-93AC-4EE3-8D20-95BF0651E288}</Project>
+      <Name>Zepheus.InterLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zepheus.Util\Zepheus.Util.csproj">
+      <Project>{463FA649-3E4C-42A0-AF28-9132E1BE07DB}</Project>
+      <Name>Zepheus.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

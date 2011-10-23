@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Zepheus.Database.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ZepheusDatabaseStoreContainer">
+          <EntitySet Name="Character" EntityType="Zepheus.Database.Store.Character" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Equip" EntityType="Zepheus.Database.Store.Equip" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Guild" EntityType="Zepheus.Database.Store.Guild" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Item" EntityType="Zepheus.Database.Store.Item" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Skills" EntityType="Zepheus.Database.Store.Skills" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Character_Guild" Association="Zepheus.Database.Store.FK_Character_Guild">
+            <End Role="Guild" EntitySet="Guild" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equip_Character" Association="Zepheus.Database.Store.FK_Equip_Character">
+            <End Role="Character" EntitySet="Character" />
+            <End Role="Equip" EntitySet="Equip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Character" Association="Zepheus.Database.Store.FK_Item_Character">
+            <End Role="Character" EntitySet="Character" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Skills_Character" Association="Zepheus.Database.Store.FK_Skills_Character">
+            <End Role="Character" EntitySet="Character" />
+            <End Role="Skills" EntitySet="Skills" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AccountID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Slot" Type="tinyint" Nullable="false" />
+          <Property Name="Map" Type="tinyint" Nullable="false" />
+          <Property Name="CharLevel" Type="tinyint" Nullable="false" />
+          <Property Name="Job" Type="tinyint" Nullable="false" />
+          <Property Name="Male" Type="bit" Nullable="false" />
+          <Property Name="HP" Type="int" Nullable="false" />
+          <Property Name="SP" Type="int" Nullable="false" />
+          <Property Name="HPStones" Type="smallint" Nullable="false" />
+          <Property Name="SPStones" Type="smallint" Nullable="false" />
+          <Property Name="Exp" Type="bigint" Nullable="false" />
+          <Property Name="Fame" Type="int" Nullable="false" />
+          <Property Name="Money" Type="bigint" Nullable="false" />
+          <Property Name="Hair" Type="tinyint" Nullable="false" />
+          <Property Name="HairColor" Type="tinyint" Nullable="false" />
+          <Property Name="Face" Type="tinyint" Nullable="false" />
+          <Property Name="XPos" Type="int" Nullable="false" />
+          <Property Name="YPos" Type="int" Nullable="false" />
+          <Property Name="StatPoints" Type="tinyint" Nullable="false" />
+          <Property Name="StrStats" Type="tinyint" Nullable="false" />
+          <Property Name="EndStats" Type="tinyint" Nullable="false" />
+          <Property Name="DexStats" Type="tinyint" Nullable="false" />
+          <Property Name="IntStats" Type="tinyint" Nullable="false" />
+          <Property Name="SprStats" Type="tinyint" Nullable="false" />
+          <Property Name="CurrentTitle" Type="int" />
+          <Property Name="QuickBar" Type="binary" MaxLength="1030" />
+          <Property Name="QuickBarState" Type="binary" MaxLength="30" />
+          <Property Name="Shortcuts" Type="binary" MaxLength="310" />
+          <Property Name="GameSettings" Type="binary" MaxLength="1030" />
+          <Property Name="ClientSettings" Type="binary" MaxLength="395" />
+          <Property Name="UsablePoints" Type="tinyint" Nullable="false" />
+          <Property Name="GuildID" Type="int" />
+        </EntityType>
+        <EntityType Name="Equip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Owner" Type="int" Nullable="false" />
+          <Property Name="Slot" Type="smallint" Nullable="false" />
+          <Property Name="EquipID" Type="int" Nullable="false" />
+          <Property Name="Upgrades" Type="tinyint" Nullable="false" />
+          <Property Name="IncStr" Type="tinyint" Nullable="false" />
+          <Property Name="IncEnd" Type="tinyint" Nullable="false" />
+          <Property Name="IncDex" Type="tinyint" Nullable="false" />
+          <Property Name="IncInt" Type="tinyint" Nullable="false" />
+          <Property Name="IncSpr" Type="tinyint" Nullable="false" />
+          <Property Name="Expires" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Guild">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Owner" Type="int" Nullable="false" />
+          <Property Name="ObjectID" Type="int" Nullable="false" />
+          <Property Name="Slot" Type="smallint" Nullable="false" />
+          <Property Name="Amount" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Skills">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Owner" Type="int" Nullable="false" />
+          <Property Name="SkillID" Type="smallint" Nullable="false" />
+          <Property Name="Upgrades" Type="smallint" Nullable="false" />
+          <Property Name="IsPassive" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Character_Guild">
+          <End Role="Guild" Type="Zepheus.Database.Store.Guild" Multiplicity="0..1" />
+          <End Role="Character" Type="Zepheus.Database.Store.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guild">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="GuildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equip_Character">
+          <End Role="Character" Type="Zepheus.Database.Store.Character" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equip" Type="Zepheus.Database.Store.Equip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Equip">
+              <PropertyRef Name="Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Character">
+          <End Role="Character" Type="Zepheus.Database.Store.Character" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Item" Type="Zepheus.Database.Store.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Skills_Character">
+          <End Role="Character" Type="Zepheus.Database.Store.Character" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Skills" Type="Zepheus.Database.Store.Skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Skills">
+              <PropertyRef Name="Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Zepheus.Database" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="WorldEntity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Characters" EntityType="Zepheus.Database.Character" />
+          <EntitySet Name="DatabaseEquips" EntityType="Zepheus.Database.DatabaseEquip" />
+          <AssociationSet Name="FK_Equip_Character" Association="Zepheus.Database.FK_Equip_Character">
+            <End Role="Character" EntitySet="Characters" />
+            <End Role="Equip" EntitySet="DatabaseEquips" />
+          </AssociationSet>
+          <EntitySet Name="DatabaseItems" EntityType="Zepheus.Database.DatabaseItem" />
+          <AssociationSet Name="FK_Item_Character1" Association="Zepheus.Database.FK_Item_Character1">
+            <End Role="Character" EntitySet="Characters" />
+            <End Role="Item" EntitySet="DatabaseItems" />
+          </AssociationSet>
+          <EntitySet Name="DatabaseSkills" EntityType="Zepheus.Database.DatabaseSkill" />
+          <AssociationSet Name="FK_Skills_Character" Association="Zepheus.Database.FK_Skills_Character">
+            <End Role="Character" EntitySet="Characters" />
+            <End Role="Skill" EntitySet="DatabaseSkills" />
+          </AssociationSet>
+          <EntitySet Name="Guilds" EntityType="Zepheus.Database.Guild" />
+          <AssociationSet Name="FK_Character_Guild" Association="Zepheus.Database.FK_Character_Guild">
+            <End Role="Guild" EntitySet="Guilds" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Slot" Type="Byte" Nullable="false" />
+          <Property Name="Map" Type="Byte" Nullable="false" />
+          <Property Name="CharLevel" Type="Byte" Nullable="false" />
+          <Property Name="Job" Type="Byte" Nullable="false" />
+          <Property Name="Male" Type="Boolean" Nullable="false" />
+          <Property Name="HP" Type="Int32" Nullable="false" />
+          <Property Name="SP" Type="Int32" Nullable="false" />
+          <Property Name="HPStones" Type="Int16" Nullable="false" />
+          <Property Name="SPStones" Type="Int16" Nullable="false" />
+          <Property Name="Exp" Type="Int64" Nullable="false" />
+          <Property Name="Fame" Type="Int32" Nullable="false" />
+          <Property Name="Money" Type="Int64" Nullable="false" />
+          <Property Name="Hair" Type="Byte" Nullable="false" />
+          <Property Name="HairColor" Type="Byte" Nullable="false" />
+          <Property Name="Face" Type="Byte" Nullable="false" />
+          <Property Name="XPos" Type="Int32" Nullable="false" />
+          <Property Name="YPos" Type="Int32" Nullable="false" />
+          <Property Name="StatPoints" Type="Byte" Nullable="false" />
+          <Property Name="StrStats" Type="Byte" Nullable="false" />
+          <Property Name="EndStats" Type="Byte" Nullable="false" />
+          <Property Name="DexStats" Type="Byte" Nullable="false" />
+          <Property Name="IntStats" Type="Byte" Nullable="false" />
+          <Property Name="SprStats" Type="Byte" Nullable="false" />
+          <Property Name="CurrentTitle" Type="Int32" />
+          <Property Name="QuickBar" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="QuickBarState" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Shortcuts" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Equips" Relationship="Zepheus.Database.FK_Equip_Character" FromRole="Character" ToRole="Equip" />
+          <NavigationProperty Name="Items" Relationship="Zepheus.Database.FK_Item_Character1" FromRole="Character" ToRole="Item" />
+          <Property Type="Binary" Name="GameSettings" MaxLength="64" FixedLength="false" />
+          <Property Type="Binary" Name="ClientSettings" MaxLength="392" FixedLength="false" />
+          <NavigationProperty Name="Skills" Relationship="Zepheus.Database.FK_Skills_Character" FromRole="Character" ToRole="Skill" />
+          <Property Type="Byte" Name="UsablePoints" Nullable="false" />
+          <Property Type="Int32" Name="GuildID" />
+          <NavigationProperty Name="Guild" Relationship="Zepheus.Database.FK_Character_Guild" FromRole="Character" ToRole="Guild" />
+        </EntityType>
+        <EntityType Name="DatabaseEquip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Owner" Type="Int32" Nullable="false" />
+          <Property Name="Slot" Type="Int16" Nullable="false" />
+          <Property Name="EquipID" Type="Int32" Nullable="false" />
+          <Property Name="Upgrades" Type="Byte" Nullable="false" />
+          <Property Name="IncStr" Type="Byte" Nullable="false" />
+          <Property Name="IncEnd" Type="Byte" Nullable="false" />
+          <Property Name="IncDex" Type="Byte" Nullable="false" />
+          <Property Name="IncInt" Type="Byte" Nullable="false" />
+          <Property Name="IncSpr" Type="Byte" Nullable="false" />
+          <Property Name="Expires" Type="DateTime" />
+          <NavigationProperty Name="Character" Relationship="Zepheus.Database.FK_Equip_Character" FromRole="Equip" ToRole="Character" />
+        </EntityType>
+        <Association Name="FK_Equip_Character">
+          <End Role="Character" Type="Zepheus.Database.Character" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equip" Type="Zepheus.Database.DatabaseEquip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Equip">
+              <PropertyRef Name="Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DatabaseItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="Owner" Nullable="false" />
+          <Property Type="Int32" Name="ObjectID" Nullable="false" />
+          <Property Type="Int16" Name="Slot" Nullable="false" />
+          <Property Type="Int16" Name="Amount" Nullable="false" />
+          <NavigationProperty Name="Character" Relationship="Zepheus.Database.FK_Item_Character1" FromRole="Item" ToRole="Character" />
+        </EntityType>
+        <Association Name="FK_Item_Character1">
+          <End Type="Zepheus.Database.Character" Role="Character" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Zepheus.Database.DatabaseItem" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DatabaseSkill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="Owner" Nullable="false" />
+          <Property Type="Int16" Name="SkillID" Nullable="false" />
+          <Property Type="Int16" Name="Upgrades" Nullable="false" />
+          <NavigationProperty Name="Character" Relationship="Zepheus.Database.FK_Skills_Character" FromRole="Skill" ToRole="Character" />
+          <Property Type="Boolean" Name="IsPassive" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Skills_Character">
+          <End Type="Zepheus.Database.Character" Role="Character" Multiplicity="1" />
+          <End Type="Zepheus.Database.DatabaseSkill" Role="Skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Skill">
+              <PropertyRef Name="Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Guild">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Characters" Relationship="Zepheus.Database.FK_Character_Guild" FromRole="Guild" ToRole="Character" />
+        </EntityType>
+        <Association Name="FK_Character_Guild">
+          <End Type="Zepheus.Database.Guild" Role="Guild" Multiplicity="0..1" />
+          <End Type="Zepheus.Database.Character" Role="Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guild">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="GuildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ZepheusDatabaseStoreContainer" CdmEntityContainer="WorldEntity">
+          <EntitySetMapping Name="Characters"><EntityTypeMapping TypeName="Zepheus.Database.Character"><MappingFragment StoreEntitySet="Character">
+            <ScalarProperty Name="GuildID" ColumnName="GuildID" />
+                <ScalarProperty Name="UsablePoints" ColumnName="UsablePoints" />
+                <ScalarProperty Name="ClientSettings" ColumnName="ClientSettings" />
+                <ScalarProperty Name="GameSettings" ColumnName="GameSettings" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Slot" ColumnName="Slot" />
+            <ScalarProperty Name="Map" ColumnName="Map" />
+            <ScalarProperty Name="CharLevel" ColumnName="CharLevel" />
+            <ScalarProperty Name="Job" ColumnName="Job" />
+            <ScalarProperty Name="Male" ColumnName="Male" />
+            <ScalarProperty Name="HP" ColumnName="HP" />
+            <ScalarProperty Name="SP" ColumnName="SP" />
+            <ScalarProperty Name="HPStones" ColumnName="HPStones" />
+            <ScalarProperty Name="SPStones" ColumnName="SPStones" />
+            <ScalarProperty Name="Exp" ColumnName="Exp" />
+            <ScalarProperty Name="Fame" ColumnName="Fame" />
+            <ScalarProperty Name="Money" ColumnName="Money" />
+            <ScalarProperty Name="Hair" ColumnName="Hair" />
+            <ScalarProperty Name="HairColor" ColumnName="HairColor" />
+            <ScalarProperty Name="Face" ColumnName="Face" />
+            <ScalarProperty Name="XPos" ColumnName="XPos" />
+            <ScalarProperty Name="YPos" ColumnName="YPos" />
+            <ScalarProperty Name="StatPoints" ColumnName="StatPoints" />
+            <ScalarProperty Name="StrStats" ColumnName="StrStats" />
+            <ScalarProperty Name="EndStats" ColumnName="EndStats" />
+            <ScalarProperty Name="DexStats" ColumnName="DexStats" />
+            <ScalarProperty Name="IntStats" ColumnName="IntStats" />
+            <ScalarProperty Name="SprStats" ColumnName="SprStats" />
+            <ScalarProperty Name="CurrentTitle" ColumnName="CurrentTitle" />
+            <ScalarProperty Name="QuickBar" ColumnName="QuickBar" />
+            <ScalarProperty Name="QuickBarState" ColumnName="QuickBarState" />
+            <ScalarProperty Name="Shortcuts" ColumnName="Shortcuts" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DatabaseEquips"><EntityTypeMapping TypeName="Zepheus.Database.DatabaseEquip"><MappingFragment StoreEntitySet="Equip">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Owner" ColumnName="Owner" />
+            <ScalarProperty Name="Slot" ColumnName="Slot" />
+            <ScalarProperty Name="EquipID" ColumnName="EquipID" />
+            <ScalarProperty Name="Upgrades" ColumnName="Upgrades" />
+            <ScalarProperty Name="IncStr" ColumnName="IncStr" />
+            <ScalarProperty Name="IncEnd" ColumnName="IncEnd" />
+            <ScalarProperty Name="IncDex" ColumnName="IncDex" />
+            <ScalarProperty Name="IncInt" ColumnName="IncInt" />
+            <ScalarProperty Name="IncSpr" ColumnName="IncSpr" />
+            <ScalarProperty Name="Expires" ColumnName="Expires" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DatabaseItems">
+            <EntityTypeMapping TypeName="Zepheus.Database.DatabaseItem">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Slot" ColumnName="Slot" />
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatabaseSkills">
+            <EntityTypeMapping TypeName="Zepheus.Database.DatabaseSkill">
+              <MappingFragment StoreEntitySet="Skills">
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+                <ScalarProperty Name="Upgrades" ColumnName="Upgrades" />
+                <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guilds">
+            <EntityTypeMapping TypeName="Zepheus.Database.Guild">
+              <MappingFragment StoreEntitySet="Guild">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="World" ZoomLevel="61">
+        <EntityTypeShape EntityType="Zepheus.Database.Character" Width="1.5" PointX="0.75" PointY="1.125" Height="6.9801236979166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Zepheus.Database.DatabaseEquip" Width="1.5" PointX="3" PointY="3" Height="3.3263964843749996" IsExpanded="true" />
+        <AssociationConnector Association="Zepheus.Database.FK_Equip_Character" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.6631982421875" />
+          <ConnectorPoint PointX="3" PointY="4.6631982421875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Zepheus.Database.DatabaseItem" Width="1.5" PointX="4.875" PointY="4" Height="2.1725878906249996" />
+        <AssociationConnector Association="Zepheus.Database.FK_Item_Character1" >
+          <ConnectorPoint PointX="2.25" PointY="7.9740884280827684" />
+          <ConnectorPoint PointX="5.625" PointY="7.9740884280827684" />
+          <ConnectorPoint PointX="5.625" PointY="6.172587890625" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Zepheus.Database.DatabaseSkill" Width="1.5" PointX="7" PointY="4.25" Height="1.9802864583333317" />
+        <AssociationConnector Association="Zepheus.Database.FK_Skills_Character" >
+          <ConnectorPoint PointX="2.25" PointY="6.4057421875" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="6.4057421874999987" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="6.4057421875" />
+          <ConnectorPoint PointX="7" PointY="6.4057421875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Zepheus.Database.Guild" Width="1.5" PointX="10.125" PointY="6.375" Height="1.5956835937499996" />
+        <AssociationConnector Association="Zepheus.Database.FK_Character_Guild" >
+          <ConnectorPoint PointX="10.125" PointY="7.250712890625" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="7.2507128906249987" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="7.250712890625" />
+          <ConnectorPoint PointX="2.25" PointY="7.250712890625" />
+        </AssociationConnector>
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
